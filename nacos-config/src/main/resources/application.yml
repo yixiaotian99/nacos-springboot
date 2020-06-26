@@ -1,0 +1,44 @@
+
+server:
+    port: 8081
+spring:
+    application:
+        name: nacos-config
+    profiles:
+        active: prd
+
+
+
+---
+# 配置 Nacos 地址
+nacos:
+    config:
+        auto-refresh: true
+        server-addr: 127.0.0.1:8848
+        type: yaml
+        namespace: 3e50a8aa-97d7-4313-b9cd-a6d822cb2614
+spring:
+    profiles: dev
+
+
+---
+# 配置 Nacos 地址
+nacos:
+    config:
+        auto-refresh: true
+        server-addr: 127.0.0.1:8848
+        type: yaml
+        namespace: fdb8c77b-f152-4f8b-974b-3c65582934b7
+spring:
+    profiles: test
+
+
+---
+# 配置 Nacos 地址
+nacos:
+    config:
+        auto-refresh: true
+        server-addr: 127.0.0.1:8848
+        namespace: f4ac693b-9073-4d8b-89e7-ceb084c24a3d
+spring:
+    profiles: prd
