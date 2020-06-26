@@ -1,0 +1,57 @@
+
+server:
+    port: 8180
+spring:
+    application:
+        name: service-1
+    profiles:
+        active: dev
+
+# 配置dubbo
+dubbo:
+    scan:
+        base-packages: com.xiao.service1.service
+    protocol:
+        name: dubbo
+        port: 20882
+    registry:
+        address: nacos://127.0.0.1:8848
+        application:
+            qos-enable: false
+        consumer:
+            check: false
+
+
+---
+# 配置 Nacos 地址
+spring:
+    profiles: dev
+    cloud:
+        nacos:
+            server-addr: 127.0.0.1:8848
+            config:
+                namespace: 3e50a8aa-97d7-4313-b9cd-a6d822cb2614
+                file-extension: yaml
+                group: DEV_GROUP
+            discovery:
+                namespace: 3e50a8aa-97d7-4313-b9cd-a6d822cb2614
+                group: DEV_GROUP
+
+
+---
+# 配置 Nacos 地址
+spring:
+    profiles: test
+    cloud:
+        nacos:
+            server-addr: 127.0.0.1:8848
+            config:
+                namespace: fdb8c77b-f152-4f8b-974b-3c65582934b7
+                file-extension: yaml
+                group: TEST_GROUP
+            discovery:
+                namespace: fdb8c77b-f152-4f8b-974b-3c65582934b7
+                group: TEST_GROUP
+
+
+
